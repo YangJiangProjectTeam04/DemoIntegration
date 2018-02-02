@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaohei.mapper.StudentDao">
+    <sql id="studentColumns">
+        id,username,password,address
+    </sql>
+
+    <select id="select"
+            resultType="com.xiaohei.domain.Student"
+            parameterType="com.xiaohei.domain.StudentParameter">
+        SELECT
+        <include refid="studentColumns"/>
+        FROM Student
+        <where>
+            1=1
+            <if test="username != null and username !=''">
+                AND username LIKE '%${username}%'
+            </if>
+        </where>
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getTotalRecord"
+            parameterType="com.xiaohei.domain.StudentParameter"
+            resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM Student
+        <where>
+            1=1
+            <if test="username != null and username != ''">
+                AND username LIKE '%${username}%'
+            </if>
+        </where>
+    </select>
+</mapper>

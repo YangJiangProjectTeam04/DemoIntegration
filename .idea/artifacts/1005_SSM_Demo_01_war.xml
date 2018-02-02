@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="1005_SSM_Demo_01:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="1005_miniui_java.war">
+      <element id="artifact" artifact-name="1005_SSM_Demo_01:war exploded" />
+    </root>
+  </artifact>
+</component>
